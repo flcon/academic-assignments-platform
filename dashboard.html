@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - AssignmentPro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>AssignmentPro</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                        <li><a href="order-management.html">My Orders</a></li>
+                        <li><a href="payment.html">Payment</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Client Dashboard</h2>
+                <p>Manage your assignments and track progress</p>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Active Orders</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Completed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>4.8</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>$320</h3>
+                        <p>Total Spent</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="newOrderBtn">
+                        <i class="fas fa-plus"></i> Place New Order
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-history"></i> Order History
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-comments"></i> Messages
+                    </button>
+                </div>
+            </div>
+            
+            <div class="recent-orders">
+                <h3>Recent Orders</h3>
+                <div class="orders-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Topic</th>
+                                <th>Writer</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>Research on AI in Education</td>
+                                <td>Dr. Smith</td>
+                                <td>2023-07-15</td>
+                                <td><span class="status in-progress">In Progress</span></td>
+                                <td><button class="btn btn-small">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Calculus Problems Solution</td>
+                                <td>Prof. Johnson</td>
+                                <td>2023-07-10</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td><button class="btn btn-small">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-003</td>
+                                <td>Business Ethics Essay</td>
+                                <td>Dr. Williams</td>
+                                <td>2023-07-20</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><button class="btn btn-small">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Order Modal -->
+    <div id="newOrderModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Place New Order</h3>
+            <form id="newOrderForm">
+                <div class="form-group">
+                    <label for="orderTitle">Assignment Title</label>
+                    <input type="text" id="orderTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderSubject">Subject</label>
+                    <select id="orderSubject" required>
+                        <option value="">Select Subject</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                        <option value="history">History</option>
+                        <option value="literature">Literature</option>
+                        <option value="business">Business</option>
+                        <option value="computer-science">Computer Science</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="orderDeadline">Deadline</label>
+                    <input type="date" id="orderDeadline" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderPages">Number of Pages</label>
+                    <input type="number" id="orderPages" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderDescription">Assignment Details</label>
+                    <textarea id="orderDescription" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="orderFiles">Upload Files (Optional)</label>
+                    <input type="file" id="orderFiles" multiple>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
