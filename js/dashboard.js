@@ -44,3 +44,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 deadline: document.getElementById('orderDeadline').value,
                 pages: document.getElementById('orderPages').value,
                 description: document.getElementById('orderDescription').value,
+                status: 'pending',
+                createdAt: new Date().toISOString(),
+                clientId: currentUser.id
+            };
+            
+            // Save order to localStorage
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            alert('Order placed successfully! Our writers will start bidding on your assignment.');
+            newOrderModal.style.display = 'none';
+            newOrderForm.reset();
+            
+            // Redirect to order management page
+            setTimeout(() => {
+                window.location.href = 'order-management.html';
+            }, 1000);
+        });
+    }
+});
